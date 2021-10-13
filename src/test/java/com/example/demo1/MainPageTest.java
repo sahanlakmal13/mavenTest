@@ -1,6 +1,7 @@
 package com.example.demo1;
 
 import com.codeborne.selenide.Configuration;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -8,6 +9,8 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.open;
 
 public class MainPageTest {
+
+    private WebDriverManager webDriverManager;
 
     //private OpenTwitterPage page = new OpenTwitterPage();
 
