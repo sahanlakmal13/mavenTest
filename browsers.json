@@ -1,11 +1,11 @@
 {
-  "chrome": {
-    "default": "64.0",
+  "firefox": {
+    "default": "57.0",
     "versions": {
-      "64.0": {
-        "image": "selenoid/chrome:90.0",
+      "57.0": {
+        "image": "selenoid/firefox:88.0",
         "port": "4444",
-        "path": "/"
+        "path": "/wd/hub"
       }
     }
   }
