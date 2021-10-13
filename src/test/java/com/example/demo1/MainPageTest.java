@@ -1,22 +1,24 @@
 package com.example.demo1;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import static com.codeborne.selenide.Configuration.browser;
+import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 
 public class MainPageTest {
 
     //private OpenTwitterPage page = new OpenTwitterPage();
 
-    @BeforeMethod
+    @BeforeClass
     void beforeAll(){
 //        Configuration.remote = "http://localhost:4444/wd/hub";
 //        DesiredCapabilities capabilities = new DesiredCapabilities();
 //        capabilities.setCapability("enableVNC", true);
 //        capabilities.setCapability("browserName", "chrome");
 //        Configuration.browserCapabilities = capabilities;
-        Configuration.browser = "firefox";
+        browser = "firefox";
     }
 
     @Test
@@ -36,5 +38,9 @@ public class MainPageTest {
 
        //Thread.sleep(6000);
 
+    }
+    @AfterClass
+    public static void logout() {
+        closeWebDriver();
     }
 }
