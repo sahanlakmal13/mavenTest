@@ -2,14 +2,15 @@ package com.example.demo1;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class MainPageTest {
 
     //private OpenTwitterPage page = new OpenTwitterPage();
 
-    @BeforeAll
-    static void beforeAll(){
+    @BeforeMethod
+    void beforeAll(){
 //        Configuration.remote = "http://localhost:4444/wd/hub";
 //        DesiredCapabilities capabilities = new DesiredCapabilities();
 //        capabilities.setCapability("enableVNC", true);
