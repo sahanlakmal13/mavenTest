@@ -16,7 +16,7 @@ public class MainPageTest {
 
     @BeforeMethod
     static void setUp(){
-        Configuration.remote = "http://localhost:4444/wd/hub";
+        //Configuration.remote = "http://localhost:4444/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         Configuration.browserCapabilities = capabilities;
