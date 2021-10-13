@@ -1,7 +1,6 @@
 package com.example.demo1;
 
 import com.codeborne.selenide.Configuration;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,34 +16,14 @@ public class MainPageTest {
         //Configuration.remote = "http://localhost:4444/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("browserName", "chrome");
         Configuration.browserCapabilities = capabilities;
-
-//        if (browserName.equals("chrome")){
-           WebDriverManager.firefoxdriver().setup();
-//            capabilities.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
-//        }
-//        else if (browserName.equals("firefox")){
-//            WebDriverManager.firefoxdriver().setup();
-//            capabilities.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
-//        }
-//        else if (browserName.equals("edge")){
-//            //WebDriverManager.edgedriver().setup();
-//            capabilities.setCapability(CapabilityType.BROWSER_NAME, BrowserType.EDGE);
-//        }
-
-//        try {
-//            driver = new RemoteWebDriver(new URL(url), capabilities);
-//            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        }
-
     }
 
     @Test
     public void openPage() throws InterruptedException {
 
-        //open("https://twitter.com/i/flow/login");
+        open("https://twitter.com/i/flow/login");
         System.out.println("hello");
         //page.userNameInput();
         Thread.sleep(6000);
