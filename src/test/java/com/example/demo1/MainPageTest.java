@@ -4,8 +4,6 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.open;
-
 public class MainPageTest {
 
     //private OpenTwitterPage page = new OpenTwitterPage();
@@ -23,7 +21,7 @@ public class MainPageTest {
     @Test
     void openPage() throws InterruptedException {
 
-        open("https://twitter.com/i/flow/login");
+        com.codeborne.selenide.Selenide.open("https://twitter.com/i/flow/login");
         System.out.println("hello");
         //page.userNameInput();
         Thread.sleep(6000);
