@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  jenkins:
+    image: hms-jenkins:1.0
+    build:
+      context: src
+      dockerfile: Jenkens_Docker.dev
+      args:
+        HOST_UID: ${HOST_UID}
+        HOST_GID: ${HOST_GID}
+    restart: unless-stopped
+    environment:
+      - "JAVA_OPTS=-Xmx1G -Xms512M"
+    volumes:
+      - ${TMP_DIR}:/tmp
+      - ${HOST_DOCKER}:/var/run/docker.sock
+      - ${HOST_JENKINS_DATA}:/var/jenkins_home
+      - ${DOCKER_COMPOSE_PATH}:/usr/local/bin/docker-compose
+
+    ports:
+      - "${HOST_WWW}:8080"
+      - "${HOST_OTHER}:50000"
+    networks:
+      jenkins:
+        aliases:
+          - jenkins-server
+networks:
+  jenkins: { }

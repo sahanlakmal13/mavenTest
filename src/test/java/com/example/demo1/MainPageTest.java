@@ -1,54 +1,61 @@
 package com.example.demo1;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.testng.annotations.*;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
-
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 
 public class MainPageTest {
-    MainPage mainPage = new MainPage();
 
-    @BeforeClass
-    public static void setUpAll() {
-        Configuration.browserSize = "1280x800";
-        SelenideLogger.addListener("allure", new AllureSelenide());
-    }
+    //private OpenTwitterPage page = new OpenTwitterPage();
 
     @BeforeMethod
-    public void setUp() {
-        open("https://www.jetbrains.com/");
+    static void setUp(){
+        Configuration.remote = "http://localhost:4444/wd/hub";
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        Configuration.browserCapabilities = capabilities;
+
+//        if (browserName.equals("chrome")){
+//            WebDriverManager.chromedriver().setup();
+//            capabilities.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
+//        }
+//        else if (browserName.equals("firefox")){
+//            WebDriverManager.firefoxdriver().setup();
+//            capabilities.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
+//        }
+//        else if (browserName.equals("edge")){
+//            //WebDriverManager.edgedriver().setup();
+//            capabilities.setCapability(CapabilityType.BROWSER_NAME, BrowserType.EDGE);
+//        }
+
+//        try {
+//            driver = new RemoteWebDriver(new URL(url), capabilities);
+//            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+
     }
 
     @Test
-    public void search() {
-        mainPage.searchButton.click();
+    public void openPage() throws InterruptedException {
 
-        $("[data-test='search-input']").sendKeys("Selenium");
-        $("button[data-test='full-search-button']").click();
+        open("https://twitter.com/i/flow/login");
 
-        $("input[data-test='search-input']").shouldHave(attribute("value", "Selenium"));
-    }
+        //page.userNameInput();
+        Thread.sleep(6000);
+        //page.passwordInput();
+        //Thread.sleep(60000);
+        //page.tweet();
 
-    @Test
-    public void toolsMenu() {
-        mainPage.toolsMenu.hover();
+        //page.openProfile();
 
-        $("div[data-test='menu-main-popup-content']").shouldBe(visible);
-    }
+        //page.openTweet();
 
-    @Test
-    public void navigationToAllTools() {
-        mainPage.seeAllToolsButton.click();
+       //Thread.sleep(6000);
 
-        $("#products-page").shouldBe(visible);
-
-        assertEquals(Selenide.title(), "All Developer Tools and Products by JetBrains");
     }
 }
