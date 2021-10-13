@@ -11,6 +11,7 @@ pipeline {
                 git 'https://github.com/sahanlakmal13/mavenTest.git'
                 sh 'docker-compose down --remove-orphans'
                 sh 'docker-compose up -d'
+                sh 'java -version'
             }
         }
         stage('Test') {
