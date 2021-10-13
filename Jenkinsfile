@@ -4,7 +4,7 @@ node{
 
     stage 'deploy'
         sh "chmod +x -R ${env.WORKSPACE}"
-        sh './deploy.sh'
+        sh 'docker-compose up -d'
 
     stage 'build'
         sh 'mvn clean install'
