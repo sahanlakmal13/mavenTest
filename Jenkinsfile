@@ -13,5 +13,10 @@ pipeline {
                 sh 'docker-compose up -d'
             }
         }
+        stage('Test') {
+            steps {
+                sh 'mvn clean test'
+            }
+        }
     }
 }
