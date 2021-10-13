@@ -44,8 +44,8 @@ public class MainPageTest {
     @Test
     public void openPage() throws InterruptedException {
 
-        open("https://twitter.com/i/flow/login");
-
+        //open("https://twitter.com/i/flow/login");
+        System.out.println("hello");
         //page.userNameInput();
         Thread.sleep(6000);
         //page.passwordInput();
