@@ -17,7 +17,7 @@ public class MainPageTest {
         Configuration.remote = "http://localhost:4444/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
-        Configuration.browser="firefox";
+        Configuration.browser="chrome";
         Configuration.browserCapabilities = capabilities;
 
 //        if (browserName.equals("chrome")){
