@@ -14,7 +14,6 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'docker ps -a'
                 sh 'mvn clean test'
             }
         }
