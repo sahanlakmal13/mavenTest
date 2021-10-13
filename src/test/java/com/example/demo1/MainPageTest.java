@@ -14,13 +14,13 @@ public class MainPageTest {
 
     @BeforeMethod
     void setUp(){
-        Configuration.remote = "http://localhost:4444/wd/hub";
+        //Configuration.remote = "http://localhost:4444/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         Configuration.browserCapabilities = capabilities;
 
 //        if (browserName.equals("chrome")){
-//            WebDriverManager.chromedriver().setup();
+           WebDriverManager.firefoxdriver().setup();
 //            capabilities.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
 //        }
 //        else if (browserName.equals("firefox")){
