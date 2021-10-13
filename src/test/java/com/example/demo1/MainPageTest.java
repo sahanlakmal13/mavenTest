@@ -1,8 +1,7 @@
 package com.example.demo1;
 
 import com.codeborne.selenide.Configuration;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.BeforeMethod;
+import org.junit.jupiter.api.BeforeAll;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -11,17 +10,18 @@ public class MainPageTest {
 
     //private OpenTwitterPage page = new OpenTwitterPage();
 
-    @BeforeMethod
-    void setUp(){
-        Configuration.remote = "http://localhost:4444/wd/hub";
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("browserName", "chrome");
-        Configuration.browserCapabilities = capabilities;
+    @BeforeAll
+    static void beforeAll(){
+//        Configuration.remote = "http://localhost:4444/wd/hub";
+//        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        capabilities.setCapability("enableVNC", true);
+//        capabilities.setCapability("browserName", "chrome");
+//        Configuration.browserCapabilities = capabilities;
+        Configuration.browser = "firefox";
     }
 
     @Test
-    public void openPage() throws InterruptedException {
+    void openPage() throws InterruptedException {
 
         open("https://twitter.com/i/flow/login");
         System.out.println("hello");
