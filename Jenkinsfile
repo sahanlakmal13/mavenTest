@@ -9,6 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 git 'https://github.com/sahanlakmal13/mavenTest.git'
+                sh 'docker-compose -f docker-compose stop'
                 sh 'docker-compose up -d'
             }
         }

@@ -10,13 +10,11 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class MainPageTest {
 
-    private WebDriverManager webDriverManager;
-
     //private OpenTwitterPage page = new OpenTwitterPage();
 
     @BeforeMethod
-    static void setUp(){
-        //Configuration.remote = "http://localhost:4444/wd/hub";
+    void setUp(){
+        Configuration.remote = "http://localhost:4444/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         Configuration.browserCapabilities = capabilities;
