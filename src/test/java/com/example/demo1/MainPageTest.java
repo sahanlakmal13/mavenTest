@@ -13,7 +13,7 @@ public class MainPageTest {
 
     @BeforeMethod
     void setUp(){
-        //Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.remote = "http://localhost:4444/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("browserName", "chrome");
