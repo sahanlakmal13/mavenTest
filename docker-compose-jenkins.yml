@@ -1,9 +1,10 @@
 version: '3.7'
+
 services:
   jenkins:
     image: hms-jenkins:1.0
     build:
-      context: src
+      context: ./
       dockerfile: Jenkens_Docker.dev
       args:
         HOST_UID: ${HOST_UID}
@@ -24,5 +25,74 @@ services:
       jenkins:
         aliases:
           - jenkins-server
+
+#  jenkins_apache:
+#    image: hms-apache:1.0
+#    build:
+#      context: ./apache
+#      dockerfile: Dockerfile.dev
+#    volumes:
+#      - ${APACHE_HTTPD_CONF_VOLUME}:/usr/local/apache2/conf/httpd.conf
+#      - ${APACHE_MPM_CONF_VOLUME}:/usr/local/apache2/conf/extra/httpd-mpm.conf
+#      - ${APACHE_SSL_CONF_VOLUME}:/usr/local/apache2/conf/extra/httpd-ssl.conf
+#      - ${APACHE_LOG_VOLUME}:/hms/logs/apache
+#      - ${APACHE_CERT_LOCATION}:/usr/local/apache2/conf/hms.crt
+#      - ${APACHE_CERT_KEY_LOCATION}:/usr/local/apache2/conf/hms.key
+#      - ${APACHE_INTERMEDIATE_CERT_LOCATION}:/usr/local/apache2/conf/ca.crt
+#    networks:
+#      jenkins:
+#        aliases:
+#          - apache-server
+#    ports:
+#      - 443:443
+#
+#  db:
+#    image: postgres:12-alpine
+#    environment:
+#      - POSTGRES_USER=sonar
+#      - POSTGRES_PASSWORD=sonar
+#      - POSTGRES_DB=sonar
+#    volumes:
+#      - ${POSTGRES_DATA}:/var/lib/postgresql/data
+#    #          - postgres_data:/var/lib/postgresql/data
+#    networks:
+#      jenkins:
+#        aliases:
+#          - sonar-server
+#
+#
+#  sonar:
+#    image: sonarqube:lts-community
+#    command: -Dsonar.web.context=/sonar
+#    depends_on:
+#      - db
+#    environment:
+#      - sonar.jdbc.username=sonar
+#      - sonar.jdbc.url=jdbc:postgresql://db/sonar
+#      - sonar.jdbc.password=sonar
+#    #         SONAR_WEB_CONTEXT: /sonar
+#    ports:
+#      - 9000:9000
+#    volumes:
+#      - ${SONAR_DATA_DIR}:/opt/sonarqube/data
+#      - ${SONAR_EXT}:/opt/sonarqube/extensions
+#      - ${SONAR_LOG}:/opt/sonarqube/logs
+#      - ${SONAR_TMP}:/opt/sonarqube/temp
+#    #          - sonarqube_data:/opt/sonarqube/data
+#    #          - sonarqube_extensions:/opt/sonarqube/extensions
+#    #          - sonarqube_logs:/opt/sonarqube/logs
+#    #          - sonarqube_temp:/opt/sonarqube/temp
+#    networks:
+#      jenkins:
+#        aliases:
+#          - sonar-server
+
 networks:
-  jenkins: { }
+  jenkins: {}
+
+#volumes:
+#  sonarqube_data:
+#  sonarqube_extensions:
+#  sonarqube_logs:
+#  sonarqube_temp:
+#  postgres_data:

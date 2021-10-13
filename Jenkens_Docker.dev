@@ -1,7 +1,7 @@
 FROM jenkins/jenkins:2.277.3-lts-jdk11
 
 ARG HOST_UID=1001
-ARG HOST_GID=992
+ARG HOST_GID=999
 
 USER root
 RUN apt-get update && apt-get install -y apt-transport-https \
@@ -20,3 +20,5 @@ RUN groupmod -g $HOST_GID docker
 RUN usermod -aG docker jenkins
 
 USER jenkins
+
+#RUN jenkins-plugin-cli --plugins "blueocean:1.24.6 docker-workflow:1.26"
